@@ -13,3 +13,8 @@ services:
     ports:
       - ${PORT}:${PORT}
     command: python3 cool/manage.py runserver 0.0.0.0:5005
+
+networks:
+  default:
+    external:
+      name: ${NETWORK:-proxy}
