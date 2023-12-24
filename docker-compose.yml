@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: cool
+    env_file:
+      - .env
+    environment:
+      - VIRTUAL_HOST=${HOST}
+      - LETSENCRYPT_HOST=${HOST}
+      - VIRTUAL_PORT=${PORT}
+    ports:
+      - ${PORT}:${PORT}
+    command: python3 cool/manage.py runserver 0.0.0.0:5005
